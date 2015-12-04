@@ -10,4 +10,8 @@ env:
 script:
 - docker login -e="none@nodomain.nonetwork" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 - docker build -t mostlygeek/i-print-envs:latest .
+- docker tag mostlygeek/i-print-envs:$TRAVIS_COMMIT mostlygeek/i-print-envs:latest 
+- docker tag mostlygeek/i-print-envs:$TRAVIS_TAG mostlygeek/i-print-envs:latest 
 - docker push mostlygeek/i-print-envs:latest
+- docker push mostlygeek/i-print-envs:$TRAVIS_COMMIT
+- docker push mostlygeek/i-print-envs:$TRAVIS_TAG
