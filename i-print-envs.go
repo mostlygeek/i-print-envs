@@ -16,6 +16,10 @@ func main() {
 		}
 	})
 
+	http.HandleFunc("/__heartbeat__", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "ok")
+	})
+
 	var port string
 
 	p := os.Getenv("PORT")
