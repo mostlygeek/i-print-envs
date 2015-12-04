@@ -9,8 +9,8 @@ env:
 # just get travis to build / push the container for now
 script:
 - docker login -e="none@nodomain.nonetwork" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-- docker build -t mostlygeek/i-print-envs:latest .
-- docker tag mostlygeek/i-print-envs:latest mostlygeek/i-print-envs:$TRAVIS_COMMIT 
-- docker push mostlygeek/i-print-envs:latest
+- docker build -t mostlygeek/i-print-envs:$TRAVIS_COMMIT .
+- docker tag mostlygeek/i-print-envs:$TRAVIS_COMMIT mostlygeek/i-print-envs:latest
 - docker push mostlygeek/i-print-envs:$TRAVIS_COMMIT
+- docker push mostlygeek/i-print-envs:latest
 - "if [ $TRAVIS_TAG != master ]; then docker tag mostlygeek/i-print-envs:latest mostlygeek/i-print-envs:$TRAVIS_TAG && push mostlygeek/i-print-envs:$TRAVIS_TAG; fi"
