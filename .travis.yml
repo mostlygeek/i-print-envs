@@ -1,0 +1,13 @@
+sudo: required
+services:
+- docker
+env:
+  global:
+  - DOCKER_USERNAME=mostlygeek
+  - secure: Erbzt6p2l037J09g/sktD9965AMOZajXXMdowEb1YJljcOPIj+Wmg6z8dEvrGBwCH0jAzzvhoWWlB9IbGOeLgYW9voKMPf9M6N6dORcSK8feUnhAFqgLdjnYLtCQl5/6vD6W8ODUNOfnG9ctny0YCeO/P9Ja6Lm/aR0fAdISzFO47OofKDMq7PqqSDxRb0cEPWxg8hbbulAXzs/fdg8fzCIZFzcE4PrcciyfPgV1MHZzoITmeXxCjHb33ScPTsPwtmkOEdfimGAs5+mF9kjdFSPVOSqqavo1YFszoFKg8gEf/lkY08V6EY072Qz5xdq6svGStUHWi4IQLMs225WFSDSyfJugJ1DU7NwJu6lo+tk+hKG10/ocJcawBz227x5e9D92oUkFuoGwmrM8RWT//tg46oHedabAT/vLsq8qd25mbF0/XrsdQ6jK1PZWuhLek849kELd7ZZWJixI0oGL7Y/2RFBtcbuppV4fIJuaJaB8KOsqF6/nWJfwjIeYDOVnJIUqcpt1YWl6dnyMmzW/5uXHMoFMV3e3sXUUaslWImAXkW+d5cGgxOtTvShC4WX1iyP0onxcUCSUNTWBJDEZdrHasee4QDswYSPSIckxeATCatsEYLJo8QYnpu6LhVIf4fSbVJel8np9Wy9myIFDTtfSgfepnKWnRtjHh+cRPNY=
+
+# just get travis to build / push the container for now
+script:
+- docker login -e="none@nodomain.nonetwork" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+- docker build -t mostlygeek/i-print-envs:latest .
+- docker push mostlygeek/i-print-envs:latest
